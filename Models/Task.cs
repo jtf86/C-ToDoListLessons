@@ -15,6 +15,11 @@ namespace ToDoList.Objects
       _id = _instances.Count;
     }
 
+    public int GetNumber()
+    {
+      return 1;
+    }
+
     public string GetDescription()
     {
       return _description;
