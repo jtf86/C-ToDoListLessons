@@ -1,16 +1,17 @@
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System;
 
 namespace ToDoList.Objects
 {
+    [TestClass]
     public class ToDoListTest : IDisposable
     {
         public void Dispose()
         {
           Task.ClearAll();
         }
-        [Fact]
+        [TestMethod]
         public void GetDescription_ReturnsDescription_String()
         {
           //Arrange
@@ -21,11 +22,11 @@ namespace ToDoList.Objects
           string result = newTask.GetDescription();
 
           //Assert
-          Assert.Equal(description, result);
+          Assert.AreEqual(description, result);
         }
 
-        [Fact]
-        public void GetZAll_ReturnsTasks_TaskList()
+        [TestMethod]
+        public void GetAll_ReturnsTasks_TaskList()
         {
           //Arrange
           string description01 = "Walk the dog";
@@ -36,9 +37,11 @@ namespace ToDoList.Objects
 
           //Act
           List<Task> result = Task.GetAll();
+          Console.WriteLine(result.Count);
+          Console.WriteLine(newList.Count);
 
           //Assert
-          Assert.Equal(newList, result);
+          CollectionAssert.AreEqual(newList, result);
         }
 
     }
